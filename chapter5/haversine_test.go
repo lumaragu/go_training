@@ -1,6 +1,9 @@
-package main
+package src
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestHarvesine(t *testing.T) {
 	type args struct {
@@ -44,4 +47,21 @@ func TestHarvesine(t *testing.T) {
 			}
 		})
 	}
+}
+
+var res float64
+
+func BenchmarkHaversine(b *testing.B) {
+	athens := Coordinate{Lat: 37.983972, Lng: 23.727806}
+	amsterdam := Coordinate{Lat: 52.366667, Lng: 4.9}
+	var distance float64
+
+	b.ReportAllocs()
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		distance = Harvesine(athens, amsterdam)
+	}
+
+	res = distance
 }
