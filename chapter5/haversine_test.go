@@ -1,4 +1,4 @@
-package src
+package haversine
 
 import (
 	"testing"
