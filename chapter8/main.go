@@ -6,17 +6,11 @@ import (
 	"go_training/chapter8/db"
 	"go_training/chapter8/repositories"
 	"go_training/chapter8/services"
-	"io"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
-
-func getHello(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("got /hello request\n")
-	io.WriteString(w, "Hello, HTTP!\n")
-}
 
 func main() {
 	db := db.ConnectDB()
