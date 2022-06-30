@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+  db:
+    platform: linux/x86
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'pass'
+      MYSQL_ROOT_PASSWORD: 'password'
+    networks:
+      - go-training
+  app:
+    build: 
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 3333:3333
+    networks:
+      - go-training
+networks:
+  go-training:
